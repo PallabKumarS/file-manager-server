@@ -7,7 +7,12 @@
     "esModuleInterop": true /* Better compatibility with CommonJS modules */,
     "forceConsistentCasingInFileNames": true,
     "strict": true /* Enable all strict type-checking options */,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/lib/*": ["./src/lib/*"],
+      "@/config": ["./src/app/config"]
+    }
   },
   "include": ["src/**/*"] /* Only compile files in the 'src' directory */
 }
