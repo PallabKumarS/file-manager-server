@@ -15,7 +15,7 @@
     "studio": "prisma studio"
   },
   "dependencies": {
-    "@prisma/client": "^7.4.1",
+    "@prisma/client": "^7.4.2",
     "bcrypt": "^6.0.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.6",
@@ -34,6 +34,7 @@
     "@types/express": "^5.0.6",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^25.3.1",
+    "prisma": "^7.4.2",
     "tsc": "^2.0.4"
   }
 }

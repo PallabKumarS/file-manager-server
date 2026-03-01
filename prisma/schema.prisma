@@ -5,10 +5,119 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client"
-  output   = "./generated"
+  provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "postgresql"
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum PackageType {
+  FREE
+  SILVER
+  GOLD
+  DIAMOND
+}
+
+enum FileType {
+  PDF
+  IMAGE
+  VIDEO
+  AUDIO
+}
+
+model USER {
+  id             String  @id @default(uuid())
+  email          String  @unique
+  password       String
+  name           String
+  role           Role    @default(USER)
+  isDeleted      Boolean @default(false)
+  subscriptionId String
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
+
+  subscription SUBSCRIPTIONS @relation(fields: [subscriptionId], references: [id])
+  folders      FOLDER[]
+  files        FILE[]
+
+  @@map("users")
+}
+
+model SUBSCRIPTIONS {
+  id               String      @id @default(uuid())
+  type             PackageType
+  maxFolder        Int
+  nestFolder       Int
+  fileSize         Int
+  fileTotal        Int
+  filePerFolder    Int
+  allowedFileTypes FileType[]
+  createdAt        DateTime    @default(now())
+  updatedAt        DateTime    @updatedAt
+
+  users USER[]
+
+  @@map("subscriptions")
+}
+
+model FOLDER {
+  id   String @id @default(uuid())
+  name String
+
+  // Ownership
+  userId String
+  user   USER   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Self-relation for nesting
+  parentId String?
+  children FOLDER[] @relation("FolderToFolder")
+  parent   FOLDER?  @relation("FolderToFolder", fields: [parentId], references: [id], onDelete: Cascade)
+
+  // Folder depth (for max nesting validation)
+  level Int
+
+  // Soft delete (recommended)
+  isDeleted Boolean @default(false)
+
+  // Files inside folder
+  files FILE[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@index([parentId])
+  @@map("folders")
+}
+
+model FILE {
+  id   String   @id @default(uuid())
+  name String
+  url  String
+  size Int
+  type FileType
+
+  // Ownership
+  userId String
+  user   USER   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Folder relation
+  folderId String
+  folder   FOLDER @relation(fields: [folderId], references: [id], onDelete: Cascade)
+
+  isDeleted Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@index([folderId])
+  @@map("files")
 }
