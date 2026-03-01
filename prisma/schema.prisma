@@ -32,16 +32,18 @@ enum FileType {
 }
 
 model USER {
-  id             String  @id @default(uuid())
-  email          String  @unique
+  id             String @id @default(uuid())
+  email          String @unique
   password       String
   name           String
-  role           Role    @default(USER)
-  isDeleted      Boolean @default(false)
+  role           Role   @default(USER)
   subscriptionId String
 
-  createdAt DateTime  @default(now())
-  updatedAt DateTime? @updatedAt
+  totalFolders Int       @default(0)
+  totalFiles   Int       @default(0)
+  isDeleted    Boolean   @default(false)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime? @updatedAt
 
   subscription SUBSCRIPTIONS @relation(fields: [subscriptionId], references: [id])
   folders      FOLDER[]
@@ -53,14 +55,17 @@ model USER {
 model SUBSCRIPTIONS {
   id               String      @id @default(uuid())
   type             PackageType
+  // folder info
   maxFolder        Int
-  nestFolder       Int
-  fileSize         Int
-  fileTotal        Int
+  nestFolderLevel  Int
   filePerFolder    Int
+  // file info
+  fileSize         Int
+  totalFiles       Int
   allowedFileTypes FileType[]
-  createdAt        DateTime    @default(now())
-  updatedAt        DateTime    @updatedAt
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   users USER[]
 
@@ -68,27 +73,20 @@ model SUBSCRIPTIONS {
 }
 
 model FOLDER {
-  id   String @id @default(uuid())
-  name String
-
+  id        String   @id @default(uuid())
+  name      String
   // Ownership
-  userId String
-  user   USER   @relation(fields: [userId], references: [id], onDelete: Cascade)
-
+  userId    String
+  user      USER     @relation(fields: [userId], references: [id], onDelete: Cascade)
   // Self-relation for nesting
-  parentId String?
-  children FOLDER[] @relation("FolderToFolder")
-  parent   FOLDER?  @relation("FolderToFolder", fields: [parentId], references: [id], onDelete: Cascade)
+  parentId  String?
+  children  FOLDER[] @relation("FolderToFolder")
+  parent    FOLDER?  @relation("FolderToFolder", fields: [parentId], references: [id], onDelete: Cascade)
+  // For validation
+  nestLevel Int
+  files     FILE[]
 
-  // Folder depth (for max nesting validation)
-  level Int
-
-  // Soft delete (recommended)
-  isDeleted Boolean @default(false)
-
-  // Files inside folder
-  files FILE[]
-
+  isDeleted Boolean  @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -98,22 +96,19 @@ model FOLDER {
 }
 
 model FILE {
-  id   String   @id @default(uuid())
-  name String
-  url  String
-  size Int
-  type FileType
-
+  id       String   @id @default(uuid())
+  name     String
+  url      String
+  size     Int
+  type     FileType
   // Ownership
-  userId String
-  user   USER   @relation(fields: [userId], references: [id], onDelete: Cascade)
-
+  userId   String
+  user     USER     @relation(fields: [userId], references: [id], onDelete: Cascade)
   // Folder relation
   folderId String
-  folder   FOLDER @relation(fields: [folderId], references: [id], onDelete: Cascade)
+  folder   FOLDER   @relation(fields: [folderId], references: [id], onDelete: Cascade)
 
-  isDeleted Boolean @default(false)
-
+  isDeleted Boolean  @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 

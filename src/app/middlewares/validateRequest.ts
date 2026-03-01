@@ -1,19 +1,18 @@
-import { NextFunction, Request, Response } from 'express';
-import { AnyZodObject } from 'zod';
-import catchAsync from '../utils/catchAsync';
+import type { NextFunction, Request, Response } from "express";
+import type { ZodObject } from "zod";
+import catchAsync from "../utils/catchAsync";
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/explicit-function-return-type
-const validateRequest = (schema: AnyZodObject) => {
-  return catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-    // console.log(req.body);
+const validateRequest = (schema: ZodObject) => {
+  return catchAsync(
+    async (req: Request, _res: Response, next: NextFunction) => {
+      await schema.parseAsync({
+        body: req.body,
+        cookies: req?.cookies,
+      });
 
-    await schema.parseAsync({
-      body: req.body,
-      cookies: req?.cookies,
-    });
-
-    next();
-  });
+      next();
+    },
+  );
 };
 
 export default validateRequest;
