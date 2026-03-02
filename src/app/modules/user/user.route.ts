@@ -5,9 +5,10 @@ import { Role } from "@prisma/client";
 
 const router = Router();
 
-router.post("/", UserController.createUser);
+router.post("/", auth(Role.ADMIN), UserController.createUser);
 router.get("/", auth(Role.ADMIN), UserController.getUsers);
 router.get("/:id", auth(Role.ADMIN), UserController.getSingleUser);
+router.get("/me", auth(Role.USER), UserController.getSingleUser);
 router.patch("/:id", auth(Role.ADMIN), UserController.updateUser);
 router.delete("/:id", auth(Role.ADMIN), UserController.deleteUser);
 

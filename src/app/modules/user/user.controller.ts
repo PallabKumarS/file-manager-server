@@ -4,7 +4,7 @@ import { UserService } from "./user.service";
 import catchAsync from "src/app/utils/catchAsync";
 
 const createUser = catchAsync(async (req, res) => {
-  const result = await UserService.createUser(req.body);
+  const result = await UserService.createUserIntoDB(req.body);
 
   sendResponse(res, {
     statusCode: status.CREATED,
@@ -15,7 +15,7 @@ const createUser = catchAsync(async (req, res) => {
 });
 
 const getUsers = catchAsync(async (_req, res) => {
-  const result = await UserService.getUsers();
+  const result = await UserService.getUsersFromDB();
   sendResponse(res, {
     statusCode: status.OK,
     success: true,
@@ -25,7 +25,18 @@ const getUsers = catchAsync(async (_req, res) => {
 });
 
 const getSingleUser = catchAsync(async (req, res) => {
-  const result = await UserService.getSingleUser(req.params.id as string);
+  const result = await UserService.getSingleUserFromDB(req.params.id as string);
+
+  sendResponse(res, {
+    statusCode: status.OK,
+    success: true,
+    message: "User retrieved successfully!",
+    data: result,
+  });
+});
+
+const getMe = catchAsync(async (req, res) => {
+  const result = await UserService.getSingleUserFromDB(req.user.id);
 
   sendResponse(res, {
     statusCode: status.OK,
@@ -36,7 +47,7 @@ const getSingleUser = catchAsync(async (req, res) => {
 });
 
 const updateUser = catchAsync(async (req, res) => {
-  const result = await UserService.updateUser(
+  const result = await UserService.updateUserIntoDB(
     req.params.id as string,
     req.body,
   );
@@ -50,7 +61,7 @@ const updateUser = catchAsync(async (req, res) => {
 });
 
 const deleteUser = catchAsync(async (req, res) => {
-  await UserService.deleteUser(req.params.id as string);
+  await UserService.deleteUserFromDB(req.params.id as string);
 
   sendResponse(res, {
     statusCode: status.OK,
@@ -65,4 +76,5 @@ export const UserController = {
   getSingleUser,
   updateUser,
   deleteUser,
+  getMe,
 };

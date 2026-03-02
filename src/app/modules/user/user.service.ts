@@ -97,6 +97,32 @@ const getSingleUserFromDB = async (id: string) => {
   return user;
 };
 
+const getMeFromDB = async (id: string) => {
+  const user = await prisma.uSER.findUnique({
+    where: { id, isDeleted: false },
+    select: {
+      subscription: true,
+      files: true,
+      folders: true,
+      email: true,
+      name: true,
+      role: true,
+      createdAt: true,
+      id: true,
+      totalFiles: true,
+      totalFolders: true,
+      updatedAt: true,
+      isDeleted: true,
+    },
+  });
+
+  if (!user) {
+    throw new AppError(status.NOT_FOUND, "User not found");
+  }
+
+  return user;
+};
+
 const updateUserIntoDB = async (id: string, payload: { name: string }) => {
   const updatedUser = await prisma.uSER.update({
     where: { id },
@@ -123,9 +149,10 @@ const deleteUserFromDB = async (id: string) => {
 };
 
 export const UserService = {
-  createUser: createUserIntoDB,
-  getUsers: getUsersFromDB,
-  getSingleUser: getSingleUserFromDB,
-  updateUser: updateUserIntoDB,
-  deleteUser: deleteUserFromDB,
+  createUserIntoDB,
+  getUsersFromDB,
+  getSingleUserFromDB,
+  updateUserIntoDB,
+  deleteUserFromDB,
+  getMeFromDB,
 };
