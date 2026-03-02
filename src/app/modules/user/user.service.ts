@@ -5,7 +5,7 @@ import bcrypt from "bcrypt";
 import status from "http-status";
 import { AppError } from "src/app/errors/AppError";
 
-const createUser = async (payload: {
+const createUserIntoDB = async (payload: {
   name: string;
   password: string;
   email: string;
@@ -39,6 +39,8 @@ const createUser = async (payload: {
       email: payload.email,
       password: hashedPassword,
       subscriptionId: freeSubscription?.id as string,
+      totalFiles: 0,
+      totalFolders: 0,
     },
   });
 
@@ -49,7 +51,7 @@ const createUser = async (payload: {
   return newUser;
 };
 
-const getUsers = async () => {
+const getUsersFromDB = async () => {
   return prisma.uSER.findMany({
     where: { isDeleted: false },
     select: {
@@ -59,11 +61,71 @@ const getUsers = async () => {
       role: true,
       createdAt: true,
       subscription: true,
+      files: true,
+      folders: true,
+      totalFiles: true,
+      totalFolders: true,
+      updatedAt: true,
+      isDeleted: true,
     },
   });
 };
 
+const getSingleUserFromDB = async (id: string) => {
+  const user = await prisma.uSER.findUnique({
+    where: { id, isDeleted: false },
+    select: {
+      subscription: true,
+      files: true,
+      folders: true,
+      email: true,
+      name: true,
+      role: true,
+      createdAt: true,
+      id: true,
+      totalFiles: true,
+      totalFolders: true,
+      updatedAt: true,
+      isDeleted: true,
+    },
+  });
+
+  if (!user) {
+    throw new AppError(status.NOT_FOUND, "User not found");
+  }
+
+  return user;
+};
+
+const updateUserIntoDB = async (id: string, payload: { name: string }) => {
+  const updatedUser = await prisma.uSER.update({
+    where: { id },
+    data: { name: payload.name },
+  });
+
+  if (!updatedUser) {
+    throw new AppError(status.NOT_FOUND, "User not found");
+  }
+  return updatedUser;
+};
+
+const deleteUserFromDB = async (id: string) => {
+  const deletedUser = await prisma.uSER.update({
+    where: { id },
+    data: { isDeleted: true },
+  });
+
+  if (!deletedUser) {
+    throw new AppError(status.NOT_FOUND, "User not found");
+  }
+
+  return deletedUser;
+};
+
 export const UserService = {
-  createUser,
-  getUsers,
+  createUser: createUserIntoDB,
+  getUsers: getUsersFromDB,
+  getSingleUser: getSingleUserFromDB,
+  updateUser: updateUserIntoDB,
+  deleteUser: deleteUserFromDB,
 };

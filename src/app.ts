@@ -8,6 +8,11 @@ import cors from "cors";
 import notFound from "./app/middlewares/notFound";
 import globalErrorHandler from "./app/middlewares/globalErrorhandler";
 import config from "./app/config";
+import { AuthRoutes } from "./app/modules/auth/auth.routes";
+import { UserRoutes } from "./app/modules/user/user.route";
+import { FileRoutes } from "./app/modules/file/file.route";
+import { SubscriptionRoutes } from "./app/modules/subscription/subscription.route";
+import { FolderRoutes } from "./app/modules/folder/folder.route";
 
 const app: Application = express();
 
@@ -22,8 +27,13 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// all routes here
+app.use("/auth", AuthRoutes);
+app.use("/users", UserRoutes);
+app.use("/subscriptions", SubscriptionRoutes);
+app.use("/folders", FolderRoutes);
+app.use("/files", FileRoutes);
 
+// all routes here
 app.get("/", (_req: Request, res: Response) => {
   res.send(`
     <!DOCTYPE html>
