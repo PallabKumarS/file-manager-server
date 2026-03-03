@@ -225,7 +225,7 @@ export type USERGroupByOutputType = {
   password: string
   name: string
   role: $Enums.Role
-  subscriptionId: string
+  subscriptionId: string | null
   totalFolders: number
   totalFiles: number
   isDeleted: boolean
@@ -262,13 +262,13 @@ export type USERWhereInput = {
   password?: Prisma.StringFilter<"USER"> | string
   name?: Prisma.StringFilter<"USER"> | string
   role?: Prisma.EnumRoleFilter<"USER"> | $Enums.Role
-  subscriptionId?: Prisma.StringFilter<"USER"> | string
+  subscriptionId?: Prisma.StringNullableFilter<"USER"> | string | null
   totalFolders?: Prisma.IntFilter<"USER"> | number
   totalFiles?: Prisma.IntFilter<"USER"> | number
   isDeleted?: Prisma.BoolFilter<"USER"> | boolean
   createdAt?: Prisma.DateTimeFilter<"USER"> | Date | string
   updatedAt?: Prisma.DateTimeNullableFilter<"USER"> | Date | string | null
-  subscription?: Prisma.XOR<Prisma.SUBSCRIPTIONSScalarRelationFilter, Prisma.SUBSCRIPTIONSWhereInput>
+  subscription?: Prisma.XOR<Prisma.SUBSCRIPTIONSNullableScalarRelationFilter, Prisma.SUBSCRIPTIONSWhereInput> | null
   folders?: Prisma.FOLDERListRelationFilter
   files?: Prisma.FILEListRelationFilter
 }
@@ -279,7 +279,7 @@ export type USEROrderByWithRelationInput = {
   password?: Prisma.SortOrder
   name?: Prisma.SortOrder
   role?: Prisma.SortOrder
-  subscriptionId?: Prisma.SortOrder
+  subscriptionId?: Prisma.SortOrderInput | Prisma.SortOrder
   totalFolders?: Prisma.SortOrder
   totalFiles?: Prisma.SortOrder
   isDeleted?: Prisma.SortOrder
@@ -299,13 +299,13 @@ export type USERWhereUniqueInput = Prisma.AtLeast<{
   password?: Prisma.StringFilter<"USER"> | string
   name?: Prisma.StringFilter<"USER"> | string
   role?: Prisma.EnumRoleFilter<"USER"> | $Enums.Role
-  subscriptionId?: Prisma.StringFilter<"USER"> | string
+  subscriptionId?: Prisma.StringNullableFilter<"USER"> | string | null
   totalFolders?: Prisma.IntFilter<"USER"> | number
   totalFiles?: Prisma.IntFilter<"USER"> | number
   isDeleted?: Prisma.BoolFilter<"USER"> | boolean
   createdAt?: Prisma.DateTimeFilter<"USER"> | Date | string
   updatedAt?: Prisma.DateTimeNullableFilter<"USER"> | Date | string | null
-  subscription?: Prisma.XOR<Prisma.SUBSCRIPTIONSScalarRelationFilter, Prisma.SUBSCRIPTIONSWhereInput>
+  subscription?: Prisma.XOR<Prisma.SUBSCRIPTIONSNullableScalarRelationFilter, Prisma.SUBSCRIPTIONSWhereInput> | null
   folders?: Prisma.FOLDERListRelationFilter
   files?: Prisma.FILEListRelationFilter
 }, "id" | "email">
@@ -316,7 +316,7 @@ export type USEROrderByWithAggregationInput = {
   password?: Prisma.SortOrder
   name?: Prisma.SortOrder
   role?: Prisma.SortOrder
-  subscriptionId?: Prisma.SortOrder
+  subscriptionId?: Prisma.SortOrderInput | Prisma.SortOrder
   totalFolders?: Prisma.SortOrder
   totalFiles?: Prisma.SortOrder
   isDeleted?: Prisma.SortOrder
@@ -338,7 +338,7 @@ export type USERScalarWhereWithAggregatesInput = {
   password?: Prisma.StringWithAggregatesFilter<"USER"> | string
   name?: Prisma.StringWithAggregatesFilter<"USER"> | string
   role?: Prisma.EnumRoleWithAggregatesFilter<"USER"> | $Enums.Role
-  subscriptionId?: Prisma.StringWithAggregatesFilter<"USER"> | string
+  subscriptionId?: Prisma.StringNullableWithAggregatesFilter<"USER"> | string | null
   totalFolders?: Prisma.IntWithAggregatesFilter<"USER"> | number
   totalFiles?: Prisma.IntWithAggregatesFilter<"USER"> | number
   isDeleted?: Prisma.BoolWithAggregatesFilter<"USER"> | boolean
@@ -357,7 +357,7 @@ export type USERCreateInput = {
   isDeleted?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
-  subscription: Prisma.SUBSCRIPTIONSCreateNestedOneWithoutUsersInput
+  subscription?: Prisma.SUBSCRIPTIONSCreateNestedOneWithoutUsersInput
   folders?: Prisma.FOLDERCreateNestedManyWithoutUserInput
   files?: Prisma.FILECreateNestedManyWithoutUserInput
 }
@@ -368,7 +368,7 @@ export type USERUncheckedCreateInput = {
   password: string
   name: string
   role?: $Enums.Role
-  subscriptionId: string
+  subscriptionId?: string | null
   totalFolders?: number
   totalFiles?: number
   isDeleted?: boolean
@@ -389,7 +389,7 @@ export type USERUpdateInput = {
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  subscription?: Prisma.SUBSCRIPTIONSUpdateOneRequiredWithoutUsersNestedInput
+  subscription?: Prisma.SUBSCRIPTIONSUpdateOneWithoutUsersNestedInput
   folders?: Prisma.FOLDERUpdateManyWithoutUserNestedInput
   files?: Prisma.FILEUpdateManyWithoutUserNestedInput
 }
@@ -400,7 +400,7 @@ export type USERUncheckedUpdateInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  subscriptionId?: Prisma.StringFieldUpdateOperationsInput | string
+  subscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalFolders?: Prisma.IntFieldUpdateOperationsInput | number
   totalFiles?: Prisma.IntFieldUpdateOperationsInput | number
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -416,7 +416,7 @@ export type USERCreateManyInput = {
   password: string
   name: string
   role?: $Enums.Role
-  subscriptionId: string
+  subscriptionId?: string | null
   totalFolders?: number
   totalFiles?: number
   isDeleted?: boolean
@@ -443,7 +443,7 @@ export type USERUncheckedUpdateManyInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  subscriptionId?: Prisma.StringFieldUpdateOperationsInput | string
+  subscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalFolders?: Prisma.IntFieldUpdateOperationsInput | number
   totalFiles?: Prisma.IntFieldUpdateOperationsInput | number
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -544,6 +544,10 @@ export type DateTimeFieldUpdateOperationsInput = {
 
 export type NullableDateTimeFieldUpdateOperationsInput = {
   set?: Date | string | null
+}
+
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
 }
 
 export type USERCreateNestedManyWithoutSubscriptionInput = {
@@ -681,7 +685,7 @@ export type USERScalarWhereInput = {
   password?: Prisma.StringFilter<"USER"> | string
   name?: Prisma.StringFilter<"USER"> | string
   role?: Prisma.EnumRoleFilter<"USER"> | $Enums.Role
-  subscriptionId?: Prisma.StringFilter<"USER"> | string
+  subscriptionId?: Prisma.StringNullableFilter<"USER"> | string | null
   totalFolders?: Prisma.IntFilter<"USER"> | number
   totalFiles?: Prisma.IntFilter<"USER"> | number
   isDeleted?: Prisma.BoolFilter<"USER"> | boolean
@@ -700,7 +704,7 @@ export type USERCreateWithoutFoldersInput = {
   isDeleted?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
-  subscription: Prisma.SUBSCRIPTIONSCreateNestedOneWithoutUsersInput
+  subscription?: Prisma.SUBSCRIPTIONSCreateNestedOneWithoutUsersInput
   files?: Prisma.FILECreateNestedManyWithoutUserInput
 }
 
@@ -710,7 +714,7 @@ export type USERUncheckedCreateWithoutFoldersInput = {
   password: string
   name: string
   role?: $Enums.Role
-  subscriptionId: string
+  subscriptionId?: string | null
   totalFolders?: number
   totalFiles?: number
   isDeleted?: boolean
@@ -746,7 +750,7 @@ export type USERUpdateWithoutFoldersInput = {
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  subscription?: Prisma.SUBSCRIPTIONSUpdateOneRequiredWithoutUsersNestedInput
+  subscription?: Prisma.SUBSCRIPTIONSUpdateOneWithoutUsersNestedInput
   files?: Prisma.FILEUpdateManyWithoutUserNestedInput
 }
 
@@ -756,7 +760,7 @@ export type USERUncheckedUpdateWithoutFoldersInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  subscriptionId?: Prisma.StringFieldUpdateOperationsInput | string
+  subscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalFolders?: Prisma.IntFieldUpdateOperationsInput | number
   totalFiles?: Prisma.IntFieldUpdateOperationsInput | number
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -776,7 +780,7 @@ export type USERCreateWithoutFilesInput = {
   isDeleted?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string | null
-  subscription: Prisma.SUBSCRIPTIONSCreateNestedOneWithoutUsersInput
+  subscription?: Prisma.SUBSCRIPTIONSCreateNestedOneWithoutUsersInput
   folders?: Prisma.FOLDERCreateNestedManyWithoutUserInput
 }
 
@@ -786,7 +790,7 @@ export type USERUncheckedCreateWithoutFilesInput = {
   password: string
   name: string
   role?: $Enums.Role
-  subscriptionId: string
+  subscriptionId?: string | null
   totalFolders?: number
   totalFiles?: number
   isDeleted?: boolean
@@ -822,7 +826,7 @@ export type USERUpdateWithoutFilesInput = {
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  subscription?: Prisma.SUBSCRIPTIONSUpdateOneRequiredWithoutUsersNestedInput
+  subscription?: Prisma.SUBSCRIPTIONSUpdateOneWithoutUsersNestedInput
   folders?: Prisma.FOLDERUpdateManyWithoutUserNestedInput
 }
 
@@ -832,7 +836,7 @@ export type USERUncheckedUpdateWithoutFilesInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  subscriptionId?: Prisma.StringFieldUpdateOperationsInput | string
+  subscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalFolders?: Prisma.IntFieldUpdateOperationsInput | number
   totalFiles?: Prisma.IntFieldUpdateOperationsInput | number
   isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -949,7 +953,7 @@ export type USERSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   isDeleted?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  subscription?: boolean | Prisma.SUBSCRIPTIONSDefaultArgs<ExtArgs>
+  subscription?: boolean | Prisma.USER$subscriptionArgs<ExtArgs>
   folders?: boolean | Prisma.USER$foldersArgs<ExtArgs>
   files?: boolean | Prisma.USER$filesArgs<ExtArgs>
   _count?: boolean | Prisma.USERCountOutputTypeDefaultArgs<ExtArgs>
@@ -967,7 +971,7 @@ export type USERSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   isDeleted?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  subscription?: boolean | Prisma.SUBSCRIPTIONSDefaultArgs<ExtArgs>
+  subscription?: boolean | Prisma.USER$subscriptionArgs<ExtArgs>
 }, ExtArgs["result"]["uSER"]>
 
 export type USERSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -982,7 +986,7 @@ export type USERSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   isDeleted?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  subscription?: boolean | Prisma.SUBSCRIPTIONSDefaultArgs<ExtArgs>
+  subscription?: boolean | Prisma.USER$subscriptionArgs<ExtArgs>
 }, ExtArgs["result"]["uSER"]>
 
 export type USERSelectScalar = {
@@ -1001,22 +1005,22 @@ export type USERSelectScalar = {
 
 export type USEROmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "password" | "name" | "role" | "subscriptionId" | "totalFolders" | "totalFiles" | "isDeleted" | "createdAt" | "updatedAt", ExtArgs["result"]["uSER"]>
 export type USERInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  subscription?: boolean | Prisma.SUBSCRIPTIONSDefaultArgs<ExtArgs>
+  subscription?: boolean | Prisma.USER$subscriptionArgs<ExtArgs>
   folders?: boolean | Prisma.USER$foldersArgs<ExtArgs>
   files?: boolean | Prisma.USER$filesArgs<ExtArgs>
   _count?: boolean | Prisma.USERCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type USERIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  subscription?: boolean | Prisma.SUBSCRIPTIONSDefaultArgs<ExtArgs>
+  subscription?: boolean | Prisma.USER$subscriptionArgs<ExtArgs>
 }
 export type USERIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  subscription?: boolean | Prisma.SUBSCRIPTIONSDefaultArgs<ExtArgs>
+  subscription?: boolean | Prisma.USER$subscriptionArgs<ExtArgs>
 }
 
 export type $USERPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "USER"
   objects: {
-    subscription: Prisma.$SUBSCRIPTIONSPayload<ExtArgs>
+    subscription: Prisma.$SUBSCRIPTIONSPayload<ExtArgs> | null
     folders: Prisma.$FOLDERPayload<ExtArgs>[]
     files: Prisma.$FILEPayload<ExtArgs>[]
   }
@@ -1026,7 +1030,7 @@ export type $USERPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     password: string
     name: string
     role: $Enums.Role
-    subscriptionId: string
+    subscriptionId: string | null
     totalFolders: number
     totalFiles: number
     isDeleted: boolean
@@ -1426,7 +1430,7 @@ readonly fields: USERFieldRefs;
  */
 export interface Prisma__USERClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  subscription<T extends Prisma.SUBSCRIPTIONSDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SUBSCRIPTIONSDefaultArgs<ExtArgs>>): Prisma.Prisma__SUBSCRIPTIONSClient<runtime.Types.Result.GetResult<Prisma.$SUBSCRIPTIONSPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  subscription<T extends Prisma.USER$subscriptionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.USER$subscriptionArgs<ExtArgs>>): Prisma.Prisma__SUBSCRIPTIONSClient<runtime.Types.Result.GetResult<Prisma.$SUBSCRIPTIONSPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   folders<T extends Prisma.USER$foldersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.USER$foldersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FOLDERPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   files<T extends Prisma.USER$filesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.USER$filesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FILEPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
@@ -1862,6 +1866,25 @@ export type USERDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Limit how many USERS to delete.
    */
   limit?: number
+}
+
+/**
+ * USER.subscription
+ */
+export type USER$subscriptionArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SUBSCRIPTIONS
+   */
+  select?: Prisma.SUBSCRIPTIONSSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SUBSCRIPTIONS
+   */
+  omit?: Prisma.SUBSCRIPTIONSOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SUBSCRIPTIONSInclude<ExtArgs> | null
+  where?: Prisma.SUBSCRIPTIONSWhereInput
 }
 
 /**

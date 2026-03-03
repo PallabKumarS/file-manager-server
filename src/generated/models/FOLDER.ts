@@ -539,10 +539,6 @@ export type FOLDERUpdateOneWithoutChildrenNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.FOLDERUpdateToOneWithWhereWithoutChildrenInput, Prisma.FOLDERUpdateWithoutChildrenInput>, Prisma.FOLDERUncheckedUpdateWithoutChildrenInput>
 }
 
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
-}
-
 export type FOLDERUncheckedUpdateManyWithoutParentNestedInput = {
   create?: Prisma.XOR<Prisma.FOLDERCreateWithoutParentInput, Prisma.FOLDERUncheckedCreateWithoutParentInput> | Prisma.FOLDERCreateWithoutParentInput[] | Prisma.FOLDERUncheckedCreateWithoutParentInput[]
   connectOrCreate?: Prisma.FOLDERCreateOrConnectWithoutParentInput | Prisma.FOLDERCreateOrConnectWithoutParentInput[]

@@ -431,9 +431,9 @@ export type SUBSCRIPTIONSUncheckedUpdateManyInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type SUBSCRIPTIONSScalarRelationFilter = {
-  is?: Prisma.SUBSCRIPTIONSWhereInput
-  isNot?: Prisma.SUBSCRIPTIONSWhereInput
+export type SUBSCRIPTIONSNullableScalarRelationFilter = {
+  is?: Prisma.SUBSCRIPTIONSWhereInput | null
+  isNot?: Prisma.SUBSCRIPTIONSWhereInput | null
 }
 
 export type EnumFileTypeNullableListFilter<$PrismaModel = never> = {
@@ -503,10 +503,12 @@ export type SUBSCRIPTIONSCreateNestedOneWithoutUsersInput = {
   connect?: Prisma.SUBSCRIPTIONSWhereUniqueInput
 }
 
-export type SUBSCRIPTIONSUpdateOneRequiredWithoutUsersNestedInput = {
+export type SUBSCRIPTIONSUpdateOneWithoutUsersNestedInput = {
   create?: Prisma.XOR<Prisma.SUBSCRIPTIONSCreateWithoutUsersInput, Prisma.SUBSCRIPTIONSUncheckedCreateWithoutUsersInput>
   connectOrCreate?: Prisma.SUBSCRIPTIONSCreateOrConnectWithoutUsersInput
   upsert?: Prisma.SUBSCRIPTIONSUpsertWithoutUsersInput
+  disconnect?: Prisma.SUBSCRIPTIONSWhereInput | boolean
+  delete?: Prisma.SUBSCRIPTIONSWhereInput | boolean
   connect?: Prisma.SUBSCRIPTIONSWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.SUBSCRIPTIONSUpdateToOneWithWhereWithoutUsersInput, Prisma.SUBSCRIPTIONSUpdateWithoutUsersInput>, Prisma.SUBSCRIPTIONSUncheckedUpdateWithoutUsersInput>
 }

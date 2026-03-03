@@ -33,12 +33,12 @@ enum FileType {
 }
 
 model USER {
-  id             String @id @default(uuid())
-  email          String @unique
+  id             String  @id @default(uuid())
+  email          String  @unique
   password       String
   name           String
-  role           Role   @default(USER)
-  subscriptionId String
+  role           Role    @default(USER)
+  subscriptionId String?
 
   totalFolders Int       @default(0)
   totalFiles   Int       @default(0)
@@ -46,7 +46,7 @@ model USER {
   createdAt    DateTime  @default(now())
   updatedAt    DateTime? @updatedAt
 
-  subscription SUBSCRIPTIONS @relation(fields: [subscriptionId], references: [id])
+  subscription SUBSCRIPTIONS? @relation(fields: [subscriptionId], references: [id])
   folders      FOLDER[]
   files        FILE[]
 
