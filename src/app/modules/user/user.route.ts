@@ -14,7 +14,7 @@ router.post(
 );
 router.get("/", auth(Role.ADMIN), UserController.getUsers);
 
-router.get("/me", auth(Role.USER), UserController.getSingleUser);
+router.get("/me", auth(Role.USER), UserController.getMe);
 
 router.get("/:id", auth(Role.ADMIN), UserController.getSingleUser);
 

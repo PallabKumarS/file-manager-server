@@ -8,18 +8,22 @@ import config from "../../config";
 const loginUser = catchAsync(async (req, res) => {
   const { accessToken, refreshToken } = await AuthService.loginUser(req.body);
 
+  const isProduction = config.node_env === "production";
+
   res.cookie("refreshToken", refreshToken, {
-    secure: config.node_env === "production",
+    secure: isProduction,
     httpOnly: true,
-    sameSite: true,
+    sameSite: isProduction ? "none" : "lax",
     maxAge: 1000 * 60 * 60 * 24 * 30,
+    path: "/",
   });
 
   res.cookie("accessToken", accessToken, {
-    secure: config.node_env === "production",
+    secure: isProduction,
     httpOnly: true,
-    sameSite: true,
-    maxAge: 1000 * 60 * 60 * 24 * 7,
+    sameSite: isProduction ? "none" : "lax",
+    maxAge: 60 * 60 * 24,
+    path: "/",
   });
 
   sendResponse(res, {
@@ -50,6 +54,16 @@ const changePassword = catchAsync(async (req, res) => {
 const refreshToken = catchAsync(async (req, res) => {
   const { refreshToken } = req.cookies;
   const result = await AuthService.refreshToken(refreshToken);
+
+  const isProduction = config.node_env === "production";
+
+  res.cookie("accessToken", result, {
+    secure: isProduction,
+    httpOnly: true,
+    sameSite: isProduction ? "lax" : "lax",
+    maxAge: 1000 * 60 * 60 * 24,
+    path: "/",
+  });
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
