@@ -54,7 +54,8 @@ export const ModelName = {
   USER: 'USER',
   SUBSCRIPTIONS: 'SUBSCRIPTIONS',
   FOLDER: 'FOLDER',
-  FILE: 'FILE'
+  FILE: 'FILE',
+  subscriptionHistory: 'subscriptionHistory'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -134,6 +135,17 @@ export const FILEScalarFieldEnum = {
 } as const
 
 export type FILEScalarFieldEnum = (typeof FILEScalarFieldEnum)[keyof typeof FILEScalarFieldEnum]
+
+
+export const SubscriptionHistoryScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  userId: 'userId',
+  subscriptionId: 'subscriptionId'
+} as const
+
+export type SubscriptionHistoryScalarFieldEnum = (typeof SubscriptionHistoryScalarFieldEnum)[keyof typeof SubscriptionHistoryScalarFieldEnum]
 
 
 export const SortOrder = {

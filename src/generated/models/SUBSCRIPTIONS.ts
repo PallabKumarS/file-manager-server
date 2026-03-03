@@ -269,6 +269,7 @@ export type SUBSCRIPTIONSWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"SUBSCRIPTIONS"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"SUBSCRIPTIONS"> | Date | string
   users?: Prisma.USERListRelationFilter
+  subscriptionHistories?: Prisma.SubscriptionHistoryListRelationFilter
 }
 
 export type SUBSCRIPTIONSOrderByWithRelationInput = {
@@ -283,6 +284,7 @@ export type SUBSCRIPTIONSOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   users?: Prisma.USEROrderByRelationAggregateInput
+  subscriptionHistories?: Prisma.subscriptionHistoryOrderByRelationAggregateInput
 }
 
 export type SUBSCRIPTIONSWhereUniqueInput = Prisma.AtLeast<{
@@ -300,6 +302,7 @@ export type SUBSCRIPTIONSWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"SUBSCRIPTIONS"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"SUBSCRIPTIONS"> | Date | string
   users?: Prisma.USERListRelationFilter
+  subscriptionHistories?: Prisma.SubscriptionHistoryListRelationFilter
 }, "id">
 
 export type SUBSCRIPTIONSOrderByWithAggregationInput = {
@@ -348,6 +351,7 @@ export type SUBSCRIPTIONSCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   users?: Prisma.USERCreateNestedManyWithoutSubscriptionInput
+  subscriptionHistories?: Prisma.subscriptionHistoryCreateNestedManyWithoutSubscriptionInput
 }
 
 export type SUBSCRIPTIONSUncheckedCreateInput = {
@@ -362,6 +366,7 @@ export type SUBSCRIPTIONSUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   users?: Prisma.USERUncheckedCreateNestedManyWithoutSubscriptionInput
+  subscriptionHistories?: Prisma.subscriptionHistoryUncheckedCreateNestedManyWithoutSubscriptionInput
 }
 
 export type SUBSCRIPTIONSUpdateInput = {
@@ -376,6 +381,7 @@ export type SUBSCRIPTIONSUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   users?: Prisma.USERUpdateManyWithoutSubscriptionNestedInput
+  subscriptionHistories?: Prisma.subscriptionHistoryUpdateManyWithoutSubscriptionNestedInput
 }
 
 export type SUBSCRIPTIONSUncheckedUpdateInput = {
@@ -390,6 +396,7 @@ export type SUBSCRIPTIONSUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   users?: Prisma.USERUncheckedUpdateManyWithoutSubscriptionNestedInput
+  subscriptionHistories?: Prisma.subscriptionHistoryUncheckedUpdateManyWithoutSubscriptionNestedInput
 }
 
 export type SUBSCRIPTIONSCreateManyInput = {
@@ -497,6 +504,11 @@ export type SUBSCRIPTIONSSumOrderByAggregateInput = {
   totalFiles?: Prisma.SortOrder
 }
 
+export type SUBSCRIPTIONSScalarRelationFilter = {
+  is?: Prisma.SUBSCRIPTIONSWhereInput
+  isNot?: Prisma.SUBSCRIPTIONSWhereInput
+}
+
 export type SUBSCRIPTIONSCreateNestedOneWithoutUsersInput = {
   create?: Prisma.XOR<Prisma.SUBSCRIPTIONSCreateWithoutUsersInput, Prisma.SUBSCRIPTIONSUncheckedCreateWithoutUsersInput>
   connectOrCreate?: Prisma.SUBSCRIPTIONSCreateOrConnectWithoutUsersInput
@@ -526,6 +538,20 @@ export type SUBSCRIPTIONSUpdateallowedFileTypesInput = {
   push?: $Enums.FileType | $Enums.FileType[]
 }
 
+export type SUBSCRIPTIONSCreateNestedOneWithoutSubscriptionHistoriesInput = {
+  create?: Prisma.XOR<Prisma.SUBSCRIPTIONSCreateWithoutSubscriptionHistoriesInput, Prisma.SUBSCRIPTIONSUncheckedCreateWithoutSubscriptionHistoriesInput>
+  connectOrCreate?: Prisma.SUBSCRIPTIONSCreateOrConnectWithoutSubscriptionHistoriesInput
+  connect?: Prisma.SUBSCRIPTIONSWhereUniqueInput
+}
+
+export type SUBSCRIPTIONSUpdateOneRequiredWithoutSubscriptionHistoriesNestedInput = {
+  create?: Prisma.XOR<Prisma.SUBSCRIPTIONSCreateWithoutSubscriptionHistoriesInput, Prisma.SUBSCRIPTIONSUncheckedCreateWithoutSubscriptionHistoriesInput>
+  connectOrCreate?: Prisma.SUBSCRIPTIONSCreateOrConnectWithoutSubscriptionHistoriesInput
+  upsert?: Prisma.SUBSCRIPTIONSUpsertWithoutSubscriptionHistoriesInput
+  connect?: Prisma.SUBSCRIPTIONSWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.SUBSCRIPTIONSUpdateToOneWithWhereWithoutSubscriptionHistoriesInput, Prisma.SUBSCRIPTIONSUpdateWithoutSubscriptionHistoriesInput>, Prisma.SUBSCRIPTIONSUncheckedUpdateWithoutSubscriptionHistoriesInput>
+}
+
 export type SUBSCRIPTIONSCreateWithoutUsersInput = {
   id?: string
   type: $Enums.PackageType
@@ -537,6 +563,7 @@ export type SUBSCRIPTIONSCreateWithoutUsersInput = {
   allowedFileTypes?: Prisma.SUBSCRIPTIONSCreateallowedFileTypesInput | $Enums.FileType[]
   createdAt?: Date | string
   updatedAt?: Date | string
+  subscriptionHistories?: Prisma.subscriptionHistoryCreateNestedManyWithoutSubscriptionInput
 }
 
 export type SUBSCRIPTIONSUncheckedCreateWithoutUsersInput = {
@@ -550,6 +577,7 @@ export type SUBSCRIPTIONSUncheckedCreateWithoutUsersInput = {
   allowedFileTypes?: Prisma.SUBSCRIPTIONSCreateallowedFileTypesInput | $Enums.FileType[]
   createdAt?: Date | string
   updatedAt?: Date | string
+  subscriptionHistories?: Prisma.subscriptionHistoryUncheckedCreateNestedManyWithoutSubscriptionInput
 }
 
 export type SUBSCRIPTIONSCreateOrConnectWithoutUsersInput = {
@@ -579,6 +607,7 @@ export type SUBSCRIPTIONSUpdateWithoutUsersInput = {
   allowedFileTypes?: Prisma.SUBSCRIPTIONSUpdateallowedFileTypesInput | $Enums.FileType[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  subscriptionHistories?: Prisma.subscriptionHistoryUpdateManyWithoutSubscriptionNestedInput
 }
 
 export type SUBSCRIPTIONSUncheckedUpdateWithoutUsersInput = {
@@ -592,6 +621,79 @@ export type SUBSCRIPTIONSUncheckedUpdateWithoutUsersInput = {
   allowedFileTypes?: Prisma.SUBSCRIPTIONSUpdateallowedFileTypesInput | $Enums.FileType[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  subscriptionHistories?: Prisma.subscriptionHistoryUncheckedUpdateManyWithoutSubscriptionNestedInput
+}
+
+export type SUBSCRIPTIONSCreateWithoutSubscriptionHistoriesInput = {
+  id?: string
+  type: $Enums.PackageType
+  maxFolder: number
+  nestFolderLevel: number
+  filePerFolder: number
+  fileSize: number
+  totalFiles: number
+  allowedFileTypes?: Prisma.SUBSCRIPTIONSCreateallowedFileTypesInput | $Enums.FileType[]
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  users?: Prisma.USERCreateNestedManyWithoutSubscriptionInput
+}
+
+export type SUBSCRIPTIONSUncheckedCreateWithoutSubscriptionHistoriesInput = {
+  id?: string
+  type: $Enums.PackageType
+  maxFolder: number
+  nestFolderLevel: number
+  filePerFolder: number
+  fileSize: number
+  totalFiles: number
+  allowedFileTypes?: Prisma.SUBSCRIPTIONSCreateallowedFileTypesInput | $Enums.FileType[]
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  users?: Prisma.USERUncheckedCreateNestedManyWithoutSubscriptionInput
+}
+
+export type SUBSCRIPTIONSCreateOrConnectWithoutSubscriptionHistoriesInput = {
+  where: Prisma.SUBSCRIPTIONSWhereUniqueInput
+  create: Prisma.XOR<Prisma.SUBSCRIPTIONSCreateWithoutSubscriptionHistoriesInput, Prisma.SUBSCRIPTIONSUncheckedCreateWithoutSubscriptionHistoriesInput>
+}
+
+export type SUBSCRIPTIONSUpsertWithoutSubscriptionHistoriesInput = {
+  update: Prisma.XOR<Prisma.SUBSCRIPTIONSUpdateWithoutSubscriptionHistoriesInput, Prisma.SUBSCRIPTIONSUncheckedUpdateWithoutSubscriptionHistoriesInput>
+  create: Prisma.XOR<Prisma.SUBSCRIPTIONSCreateWithoutSubscriptionHistoriesInput, Prisma.SUBSCRIPTIONSUncheckedCreateWithoutSubscriptionHistoriesInput>
+  where?: Prisma.SUBSCRIPTIONSWhereInput
+}
+
+export type SUBSCRIPTIONSUpdateToOneWithWhereWithoutSubscriptionHistoriesInput = {
+  where?: Prisma.SUBSCRIPTIONSWhereInput
+  data: Prisma.XOR<Prisma.SUBSCRIPTIONSUpdateWithoutSubscriptionHistoriesInput, Prisma.SUBSCRIPTIONSUncheckedUpdateWithoutSubscriptionHistoriesInput>
+}
+
+export type SUBSCRIPTIONSUpdateWithoutSubscriptionHistoriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumPackageTypeFieldUpdateOperationsInput | $Enums.PackageType
+  maxFolder?: Prisma.IntFieldUpdateOperationsInput | number
+  nestFolderLevel?: Prisma.IntFieldUpdateOperationsInput | number
+  filePerFolder?: Prisma.IntFieldUpdateOperationsInput | number
+  fileSize?: Prisma.IntFieldUpdateOperationsInput | number
+  totalFiles?: Prisma.IntFieldUpdateOperationsInput | number
+  allowedFileTypes?: Prisma.SUBSCRIPTIONSUpdateallowedFileTypesInput | $Enums.FileType[]
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  users?: Prisma.USERUpdateManyWithoutSubscriptionNestedInput
+}
+
+export type SUBSCRIPTIONSUncheckedUpdateWithoutSubscriptionHistoriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumPackageTypeFieldUpdateOperationsInput | $Enums.PackageType
+  maxFolder?: Prisma.IntFieldUpdateOperationsInput | number
+  nestFolderLevel?: Prisma.IntFieldUpdateOperationsInput | number
+  filePerFolder?: Prisma.IntFieldUpdateOperationsInput | number
+  fileSize?: Prisma.IntFieldUpdateOperationsInput | number
+  totalFiles?: Prisma.IntFieldUpdateOperationsInput | number
+  allowedFileTypes?: Prisma.SUBSCRIPTIONSUpdateallowedFileTypesInput | $Enums.FileType[]
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  users?: Prisma.USERUncheckedUpdateManyWithoutSubscriptionNestedInput
 }
 
 
@@ -601,10 +703,12 @@ export type SUBSCRIPTIONSUncheckedUpdateWithoutUsersInput = {
 
 export type SUBSCRIPTIONSCountOutputType = {
   users: number
+  subscriptionHistories: number
 }
 
 export type SUBSCRIPTIONSCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   users?: boolean | SUBSCRIPTIONSCountOutputTypeCountUsersArgs
+  subscriptionHistories?: boolean | SUBSCRIPTIONSCountOutputTypeCountSubscriptionHistoriesArgs
 }
 
 /**
@@ -624,6 +728,13 @@ export type SUBSCRIPTIONSCountOutputTypeCountUsersArgs<ExtArgs extends runtime.T
   where?: Prisma.USERWhereInput
 }
 
+/**
+ * SUBSCRIPTIONSCountOutputType without action
+ */
+export type SUBSCRIPTIONSCountOutputTypeCountSubscriptionHistoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.subscriptionHistoryWhereInput
+}
+
 
 export type SUBSCRIPTIONSSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -637,6 +748,7 @@ export type SUBSCRIPTIONSSelect<ExtArgs extends runtime.Types.Extensions.Interna
   createdAt?: boolean
   updatedAt?: boolean
   users?: boolean | Prisma.SUBSCRIPTIONS$usersArgs<ExtArgs>
+  subscriptionHistories?: boolean | Prisma.SUBSCRIPTIONS$subscriptionHistoriesArgs<ExtArgs>
   _count?: boolean | Prisma.SUBSCRIPTIONSCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["sUBSCRIPTIONS"]>
 
@@ -682,6 +794,7 @@ export type SUBSCRIPTIONSSelectScalar = {
 export type SUBSCRIPTIONSOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "type" | "maxFolder" | "nestFolderLevel" | "filePerFolder" | "fileSize" | "totalFiles" | "allowedFileTypes" | "createdAt" | "updatedAt", ExtArgs["result"]["sUBSCRIPTIONS"]>
 export type SUBSCRIPTIONSInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   users?: boolean | Prisma.SUBSCRIPTIONS$usersArgs<ExtArgs>
+  subscriptionHistories?: boolean | Prisma.SUBSCRIPTIONS$subscriptionHistoriesArgs<ExtArgs>
   _count?: boolean | Prisma.SUBSCRIPTIONSCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type SUBSCRIPTIONSIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -691,6 +804,7 @@ export type $SUBSCRIPTIONSPayload<ExtArgs extends runtime.Types.Extensions.Inter
   name: "SUBSCRIPTIONS"
   objects: {
     users: Prisma.$USERPayload<ExtArgs>[]
+    subscriptionHistories: Prisma.$subscriptionHistoryPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1098,6 +1212,7 @@ readonly fields: SUBSCRIPTIONSFieldRefs;
 export interface Prisma__SUBSCRIPTIONSClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   users<T extends Prisma.SUBSCRIPTIONS$usersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SUBSCRIPTIONS$usersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$USERPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  subscriptionHistories<T extends Prisma.SUBSCRIPTIONS$subscriptionHistoriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SUBSCRIPTIONS$subscriptionHistoriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$subscriptionHistoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1546,6 +1661,30 @@ export type SUBSCRIPTIONS$usersArgs<ExtArgs extends runtime.Types.Extensions.Int
   take?: number
   skip?: number
   distinct?: Prisma.USERScalarFieldEnum | Prisma.USERScalarFieldEnum[]
+}
+
+/**
+ * SUBSCRIPTIONS.subscriptionHistories
+ */
+export type SUBSCRIPTIONS$subscriptionHistoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the subscriptionHistory
+   */
+  select?: Prisma.subscriptionHistorySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the subscriptionHistory
+   */
+  omit?: Prisma.subscriptionHistoryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.subscriptionHistoryInclude<ExtArgs> | null
+  where?: Prisma.subscriptionHistoryWhereInput
+  orderBy?: Prisma.subscriptionHistoryOrderByWithRelationInput | Prisma.subscriptionHistoryOrderByWithRelationInput[]
+  cursor?: Prisma.subscriptionHistoryWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SubscriptionHistoryScalarFieldEnum | Prisma.SubscriptionHistoryScalarFieldEnum[]
 }
 
 /**

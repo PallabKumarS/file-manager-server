@@ -387,7 +387,8 @@ export const ModelName = {
   USER: 'USER',
   SUBSCRIPTIONS: 'SUBSCRIPTIONS',
   FOLDER: 'FOLDER',
-  FILE: 'FILE'
+  FILE: 'FILE',
+  subscriptionHistory: 'subscriptionHistory'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -403,7 +404,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "uSER" | "sUBSCRIPTIONS" | "fOLDER" | "fILE"
+    modelProps: "uSER" | "sUBSCRIPTIONS" | "fOLDER" | "fILE" | "subscriptionHistory"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -703,6 +704,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    subscriptionHistory: {
+      payload: Prisma.$subscriptionHistoryPayload<ExtArgs>
+      fields: Prisma.subscriptionHistoryFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.subscriptionHistoryFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$subscriptionHistoryPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.subscriptionHistoryFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$subscriptionHistoryPayload>
+        }
+        findFirst: {
+          args: Prisma.subscriptionHistoryFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$subscriptionHistoryPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.subscriptionHistoryFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$subscriptionHistoryPayload>
+        }
+        findMany: {
+          args: Prisma.subscriptionHistoryFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$subscriptionHistoryPayload>[]
+        }
+        create: {
+          args: Prisma.subscriptionHistoryCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$subscriptionHistoryPayload>
+        }
+        createMany: {
+          args: Prisma.subscriptionHistoryCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.subscriptionHistoryCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$subscriptionHistoryPayload>[]
+        }
+        delete: {
+          args: Prisma.subscriptionHistoryDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$subscriptionHistoryPayload>
+        }
+        update: {
+          args: Prisma.subscriptionHistoryUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$subscriptionHistoryPayload>
+        }
+        deleteMany: {
+          args: Prisma.subscriptionHistoryDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.subscriptionHistoryUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.subscriptionHistoryUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$subscriptionHistoryPayload>[]
+        }
+        upsert: {
+          args: Prisma.subscriptionHistoryUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$subscriptionHistoryPayload>
+        }
+        aggregate: {
+          args: Prisma.SubscriptionHistoryAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSubscriptionHistory>
+        }
+        groupBy: {
+          args: Prisma.subscriptionHistoryGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SubscriptionHistoryGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.subscriptionHistoryCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SubscriptionHistoryCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -803,6 +878,17 @@ export const FILEScalarFieldEnum = {
 } as const
 
 export type FILEScalarFieldEnum = (typeof FILEScalarFieldEnum)[keyof typeof FILEScalarFieldEnum]
+
+
+export const SubscriptionHistoryScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  userId: 'userId',
+  subscriptionId: 'subscriptionId'
+} as const
+
+export type SubscriptionHistoryScalarFieldEnum = (typeof SubscriptionHistoryScalarFieldEnum)[keyof typeof SubscriptionHistoryScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1038,6 +1124,7 @@ export type GlobalOmitConfig = {
   sUBSCRIPTIONS?: Prisma.SUBSCRIPTIONSOmit
   fOLDER?: Prisma.FOLDEROmit
   fILE?: Prisma.FILEOmit
+  subscriptionHistory?: Prisma.subscriptionHistoryOmit
 }
 
 /* Types for Logging */

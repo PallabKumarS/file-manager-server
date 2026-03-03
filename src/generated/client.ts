@@ -59,3 +59,8 @@ export type FOLDER = Prisma.FOLDERModel
  * 
  */
 export type FILE = Prisma.FILEModel
+/**
+ * Model subscriptionHistory
+ * 
+ */
+export type subscriptionHistory = Prisma.subscriptionHistoryModel

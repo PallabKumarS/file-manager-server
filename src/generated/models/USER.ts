@@ -271,6 +271,7 @@ export type USERWhereInput = {
   subscription?: Prisma.XOR<Prisma.SUBSCRIPTIONSNullableScalarRelationFilter, Prisma.SUBSCRIPTIONSWhereInput> | null
   folders?: Prisma.FOLDERListRelationFilter
   files?: Prisma.FILEListRelationFilter
+  subscriptionHistories?: Prisma.SubscriptionHistoryListRelationFilter
 }
 
 export type USEROrderByWithRelationInput = {
@@ -288,6 +289,7 @@ export type USEROrderByWithRelationInput = {
   subscription?: Prisma.SUBSCRIPTIONSOrderByWithRelationInput
   folders?: Prisma.FOLDEROrderByRelationAggregateInput
   files?: Prisma.FILEOrderByRelationAggregateInput
+  subscriptionHistories?: Prisma.subscriptionHistoryOrderByRelationAggregateInput
 }
 
 export type USERWhereUniqueInput = Prisma.AtLeast<{
@@ -308,6 +310,7 @@ export type USERWhereUniqueInput = Prisma.AtLeast<{
   subscription?: Prisma.XOR<Prisma.SUBSCRIPTIONSNullableScalarRelationFilter, Prisma.SUBSCRIPTIONSWhereInput> | null
   folders?: Prisma.FOLDERListRelationFilter
   files?: Prisma.FILEListRelationFilter
+  subscriptionHistories?: Prisma.SubscriptionHistoryListRelationFilter
 }, "id" | "email">
 
 export type USEROrderByWithAggregationInput = {
@@ -360,6 +363,7 @@ export type USERCreateInput = {
   subscription?: Prisma.SUBSCRIPTIONSCreateNestedOneWithoutUsersInput
   folders?: Prisma.FOLDERCreateNestedManyWithoutUserInput
   files?: Prisma.FILECreateNestedManyWithoutUserInput
+  subscriptionHistories?: Prisma.subscriptionHistoryCreateNestedManyWithoutUserInput
 }
 
 export type USERUncheckedCreateInput = {
@@ -376,6 +380,7 @@ export type USERUncheckedCreateInput = {
   updatedAt?: Date | string | null
   folders?: Prisma.FOLDERUncheckedCreateNestedManyWithoutUserInput
   files?: Prisma.FILEUncheckedCreateNestedManyWithoutUserInput
+  subscriptionHistories?: Prisma.subscriptionHistoryUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type USERUpdateInput = {
@@ -392,6 +397,7 @@ export type USERUpdateInput = {
   subscription?: Prisma.SUBSCRIPTIONSUpdateOneWithoutUsersNestedInput
   folders?: Prisma.FOLDERUpdateManyWithoutUserNestedInput
   files?: Prisma.FILEUpdateManyWithoutUserNestedInput
+  subscriptionHistories?: Prisma.subscriptionHistoryUpdateManyWithoutUserNestedInput
 }
 
 export type USERUncheckedUpdateInput = {
@@ -408,6 +414,7 @@ export type USERUncheckedUpdateInput = {
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   folders?: Prisma.FOLDERUncheckedUpdateManyWithoutUserNestedInput
   files?: Prisma.FILEUncheckedUpdateManyWithoutUserNestedInput
+  subscriptionHistories?: Prisma.subscriptionHistoryUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type USERCreateManyInput = {
@@ -620,6 +627,20 @@ export type USERUpdateOneRequiredWithoutFilesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.USERUpdateToOneWithWhereWithoutFilesInput, Prisma.USERUpdateWithoutFilesInput>, Prisma.USERUncheckedUpdateWithoutFilesInput>
 }
 
+export type USERCreateNestedOneWithoutSubscriptionHistoriesInput = {
+  create?: Prisma.XOR<Prisma.USERCreateWithoutSubscriptionHistoriesInput, Prisma.USERUncheckedCreateWithoutSubscriptionHistoriesInput>
+  connectOrCreate?: Prisma.USERCreateOrConnectWithoutSubscriptionHistoriesInput
+  connect?: Prisma.USERWhereUniqueInput
+}
+
+export type USERUpdateOneRequiredWithoutSubscriptionHistoriesNestedInput = {
+  create?: Prisma.XOR<Prisma.USERCreateWithoutSubscriptionHistoriesInput, Prisma.USERUncheckedCreateWithoutSubscriptionHistoriesInput>
+  connectOrCreate?: Prisma.USERCreateOrConnectWithoutSubscriptionHistoriesInput
+  upsert?: Prisma.USERUpsertWithoutSubscriptionHistoriesInput
+  connect?: Prisma.USERWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.USERUpdateToOneWithWhereWithoutSubscriptionHistoriesInput, Prisma.USERUpdateWithoutSubscriptionHistoriesInput>, Prisma.USERUncheckedUpdateWithoutSubscriptionHistoriesInput>
+}
+
 export type USERCreateWithoutSubscriptionInput = {
   id?: string
   email: string
@@ -633,6 +654,7 @@ export type USERCreateWithoutSubscriptionInput = {
   updatedAt?: Date | string | null
   folders?: Prisma.FOLDERCreateNestedManyWithoutUserInput
   files?: Prisma.FILECreateNestedManyWithoutUserInput
+  subscriptionHistories?: Prisma.subscriptionHistoryCreateNestedManyWithoutUserInput
 }
 
 export type USERUncheckedCreateWithoutSubscriptionInput = {
@@ -648,6 +670,7 @@ export type USERUncheckedCreateWithoutSubscriptionInput = {
   updatedAt?: Date | string | null
   folders?: Prisma.FOLDERUncheckedCreateNestedManyWithoutUserInput
   files?: Prisma.FILEUncheckedCreateNestedManyWithoutUserInput
+  subscriptionHistories?: Prisma.subscriptionHistoryUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type USERCreateOrConnectWithoutSubscriptionInput = {
@@ -706,6 +729,7 @@ export type USERCreateWithoutFoldersInput = {
   updatedAt?: Date | string | null
   subscription?: Prisma.SUBSCRIPTIONSCreateNestedOneWithoutUsersInput
   files?: Prisma.FILECreateNestedManyWithoutUserInput
+  subscriptionHistories?: Prisma.subscriptionHistoryCreateNestedManyWithoutUserInput
 }
 
 export type USERUncheckedCreateWithoutFoldersInput = {
@@ -721,6 +745,7 @@ export type USERUncheckedCreateWithoutFoldersInput = {
   createdAt?: Date | string
   updatedAt?: Date | string | null
   files?: Prisma.FILEUncheckedCreateNestedManyWithoutUserInput
+  subscriptionHistories?: Prisma.subscriptionHistoryUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type USERCreateOrConnectWithoutFoldersInput = {
@@ -752,6 +777,7 @@ export type USERUpdateWithoutFoldersInput = {
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   subscription?: Prisma.SUBSCRIPTIONSUpdateOneWithoutUsersNestedInput
   files?: Prisma.FILEUpdateManyWithoutUserNestedInput
+  subscriptionHistories?: Prisma.subscriptionHistoryUpdateManyWithoutUserNestedInput
 }
 
 export type USERUncheckedUpdateWithoutFoldersInput = {
@@ -767,6 +793,7 @@ export type USERUncheckedUpdateWithoutFoldersInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   files?: Prisma.FILEUncheckedUpdateManyWithoutUserNestedInput
+  subscriptionHistories?: Prisma.subscriptionHistoryUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type USERCreateWithoutFilesInput = {
@@ -782,6 +809,7 @@ export type USERCreateWithoutFilesInput = {
   updatedAt?: Date | string | null
   subscription?: Prisma.SUBSCRIPTIONSCreateNestedOneWithoutUsersInput
   folders?: Prisma.FOLDERCreateNestedManyWithoutUserInput
+  subscriptionHistories?: Prisma.subscriptionHistoryCreateNestedManyWithoutUserInput
 }
 
 export type USERUncheckedCreateWithoutFilesInput = {
@@ -797,6 +825,7 @@ export type USERUncheckedCreateWithoutFilesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string | null
   folders?: Prisma.FOLDERUncheckedCreateNestedManyWithoutUserInput
+  subscriptionHistories?: Prisma.subscriptionHistoryUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type USERCreateOrConnectWithoutFilesInput = {
@@ -828,6 +857,7 @@ export type USERUpdateWithoutFilesInput = {
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   subscription?: Prisma.SUBSCRIPTIONSUpdateOneWithoutUsersNestedInput
   folders?: Prisma.FOLDERUpdateManyWithoutUserNestedInput
+  subscriptionHistories?: Prisma.subscriptionHistoryUpdateManyWithoutUserNestedInput
 }
 
 export type USERUncheckedUpdateWithoutFilesInput = {
@@ -843,6 +873,87 @@ export type USERUncheckedUpdateWithoutFilesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   folders?: Prisma.FOLDERUncheckedUpdateManyWithoutUserNestedInput
+  subscriptionHistories?: Prisma.subscriptionHistoryUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type USERCreateWithoutSubscriptionHistoriesInput = {
+  id?: string
+  email: string
+  password: string
+  name: string
+  role?: $Enums.Role
+  totalFolders?: number
+  totalFiles?: number
+  isDeleted?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  subscription?: Prisma.SUBSCRIPTIONSCreateNestedOneWithoutUsersInput
+  folders?: Prisma.FOLDERCreateNestedManyWithoutUserInput
+  files?: Prisma.FILECreateNestedManyWithoutUserInput
+}
+
+export type USERUncheckedCreateWithoutSubscriptionHistoriesInput = {
+  id?: string
+  email: string
+  password: string
+  name: string
+  role?: $Enums.Role
+  subscriptionId?: string | null
+  totalFolders?: number
+  totalFiles?: number
+  isDeleted?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  folders?: Prisma.FOLDERUncheckedCreateNestedManyWithoutUserInput
+  files?: Prisma.FILEUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type USERCreateOrConnectWithoutSubscriptionHistoriesInput = {
+  where: Prisma.USERWhereUniqueInput
+  create: Prisma.XOR<Prisma.USERCreateWithoutSubscriptionHistoriesInput, Prisma.USERUncheckedCreateWithoutSubscriptionHistoriesInput>
+}
+
+export type USERUpsertWithoutSubscriptionHistoriesInput = {
+  update: Prisma.XOR<Prisma.USERUpdateWithoutSubscriptionHistoriesInput, Prisma.USERUncheckedUpdateWithoutSubscriptionHistoriesInput>
+  create: Prisma.XOR<Prisma.USERCreateWithoutSubscriptionHistoriesInput, Prisma.USERUncheckedCreateWithoutSubscriptionHistoriesInput>
+  where?: Prisma.USERWhereInput
+}
+
+export type USERUpdateToOneWithWhereWithoutSubscriptionHistoriesInput = {
+  where?: Prisma.USERWhereInput
+  data: Prisma.XOR<Prisma.USERUpdateWithoutSubscriptionHistoriesInput, Prisma.USERUncheckedUpdateWithoutSubscriptionHistoriesInput>
+}
+
+export type USERUpdateWithoutSubscriptionHistoriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  totalFolders?: Prisma.IntFieldUpdateOperationsInput | number
+  totalFiles?: Prisma.IntFieldUpdateOperationsInput | number
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  subscription?: Prisma.SUBSCRIPTIONSUpdateOneWithoutUsersNestedInput
+  folders?: Prisma.FOLDERUpdateManyWithoutUserNestedInput
+  files?: Prisma.FILEUpdateManyWithoutUserNestedInput
+}
+
+export type USERUncheckedUpdateWithoutSubscriptionHistoriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  subscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalFolders?: Prisma.IntFieldUpdateOperationsInput | number
+  totalFiles?: Prisma.IntFieldUpdateOperationsInput | number
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  folders?: Prisma.FOLDERUncheckedUpdateManyWithoutUserNestedInput
+  files?: Prisma.FILEUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type USERCreateManySubscriptionInput = {
@@ -871,6 +982,7 @@ export type USERUpdateWithoutSubscriptionInput = {
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   folders?: Prisma.FOLDERUpdateManyWithoutUserNestedInput
   files?: Prisma.FILEUpdateManyWithoutUserNestedInput
+  subscriptionHistories?: Prisma.subscriptionHistoryUpdateManyWithoutUserNestedInput
 }
 
 export type USERUncheckedUpdateWithoutSubscriptionInput = {
@@ -886,6 +998,7 @@ export type USERUncheckedUpdateWithoutSubscriptionInput = {
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   folders?: Prisma.FOLDERUncheckedUpdateManyWithoutUserNestedInput
   files?: Prisma.FILEUncheckedUpdateManyWithoutUserNestedInput
+  subscriptionHistories?: Prisma.subscriptionHistoryUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type USERUncheckedUpdateManyWithoutSubscriptionInput = {
@@ -909,11 +1022,13 @@ export type USERUncheckedUpdateManyWithoutSubscriptionInput = {
 export type USERCountOutputType = {
   folders: number
   files: number
+  subscriptionHistories: number
 }
 
 export type USERCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   folders?: boolean | USERCountOutputTypeCountFoldersArgs
   files?: boolean | USERCountOutputTypeCountFilesArgs
+  subscriptionHistories?: boolean | USERCountOutputTypeCountSubscriptionHistoriesArgs
 }
 
 /**
@@ -940,6 +1055,13 @@ export type USERCountOutputTypeCountFilesArgs<ExtArgs extends runtime.Types.Exte
   where?: Prisma.FILEWhereInput
 }
 
+/**
+ * USERCountOutputType without action
+ */
+export type USERCountOutputTypeCountSubscriptionHistoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.subscriptionHistoryWhereInput
+}
+
 
 export type USERSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -956,6 +1078,7 @@ export type USERSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   subscription?: boolean | Prisma.USER$subscriptionArgs<ExtArgs>
   folders?: boolean | Prisma.USER$foldersArgs<ExtArgs>
   files?: boolean | Prisma.USER$filesArgs<ExtArgs>
+  subscriptionHistories?: boolean | Prisma.USER$subscriptionHistoriesArgs<ExtArgs>
   _count?: boolean | Prisma.USERCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["uSER"]>
 
@@ -1008,6 +1131,7 @@ export type USERInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   subscription?: boolean | Prisma.USER$subscriptionArgs<ExtArgs>
   folders?: boolean | Prisma.USER$foldersArgs<ExtArgs>
   files?: boolean | Prisma.USER$filesArgs<ExtArgs>
+  subscriptionHistories?: boolean | Prisma.USER$subscriptionHistoriesArgs<ExtArgs>
   _count?: boolean | Prisma.USERCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type USERIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1023,6 +1147,7 @@ export type $USERPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     subscription: Prisma.$SUBSCRIPTIONSPayload<ExtArgs> | null
     folders: Prisma.$FOLDERPayload<ExtArgs>[]
     files: Prisma.$FILEPayload<ExtArgs>[]
+    subscriptionHistories: Prisma.$subscriptionHistoryPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1433,6 +1558,7 @@ export interface Prisma__USERClient<T, Null = never, ExtArgs extends runtime.Typ
   subscription<T extends Prisma.USER$subscriptionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.USER$subscriptionArgs<ExtArgs>>): Prisma.Prisma__SUBSCRIPTIONSClient<runtime.Types.Result.GetResult<Prisma.$SUBSCRIPTIONSPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   folders<T extends Prisma.USER$foldersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.USER$foldersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FOLDERPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   files<T extends Prisma.USER$filesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.USER$filesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FILEPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  subscriptionHistories<T extends Prisma.USER$subscriptionHistoriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.USER$subscriptionHistoriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$subscriptionHistoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1933,6 +2059,30 @@ export type USER$filesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
   take?: number
   skip?: number
   distinct?: Prisma.FILEScalarFieldEnum | Prisma.FILEScalarFieldEnum[]
+}
+
+/**
+ * USER.subscriptionHistories
+ */
+export type USER$subscriptionHistoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the subscriptionHistory
+   */
+  select?: Prisma.subscriptionHistorySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the subscriptionHistory
+   */
+  omit?: Prisma.subscriptionHistoryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.subscriptionHistoryInclude<ExtArgs> | null
+  where?: Prisma.subscriptionHistoryWhereInput
+  orderBy?: Prisma.subscriptionHistoryOrderByWithRelationInput | Prisma.subscriptionHistoryOrderByWithRelationInput[]
+  cursor?: Prisma.subscriptionHistoryWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SubscriptionHistoryScalarFieldEnum | Prisma.SubscriptionHistoryScalarFieldEnum[]
 }
 
 /**
