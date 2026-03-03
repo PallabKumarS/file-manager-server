@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES2020" /* Modern JavaScript version */,
+    "target": "es2020" /* Modern JavaScript version */,
     "module": "commonjs" /* The module system Node.js uses */,
     "rootDir": "./src" /* Where to find our TypeScript files */,
     "outDir": "./dist" /* Where to put the compiled JavaScript files */,

@@ -5,7 +5,7 @@ import { Role } from "src/generated/enums";
 
 const router = Router();
 
-router.post("/", auth(Role.ADMIN), UserController.createUser);
+router.post("/", UserController.createUser);
 router.get("/", auth(Role.ADMIN), UserController.getUsers);
 router.get("/:id", auth(Role.ADMIN), UserController.getSingleUser);
 router.get("/me", auth(Role.USER), UserController.getSingleUser);

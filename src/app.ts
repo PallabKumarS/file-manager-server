@@ -7,7 +7,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import notFound from "./app/middlewares/notFound";
 import globalErrorHandler from "./app/middlewares/globalErrorhandler";
-import config from "./app/config";
+import config from "@/config";
 import { AuthRoutes } from "./app/modules/auth/auth.routes";
 import { UserRoutes } from "./app/modules/user/user.route";
 import { FileRoutes } from "./app/modules/file/file.route";

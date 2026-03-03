@@ -1,7 +1,7 @@
+import config from "@/config";
 import app from "./app";
 
 import type { Server } from "node:http";
-import config from "./app/config";
 
 let server: Server;
 
