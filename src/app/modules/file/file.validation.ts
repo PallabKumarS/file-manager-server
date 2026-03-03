@@ -1,5 +1,5 @@
+import { FileType } from "src/generated/enums";
 import { z } from "zod";
-import { FileType } from "@prisma/client";
 
 const uploadFileSchema = z.object({
   name: z.string().min(1),

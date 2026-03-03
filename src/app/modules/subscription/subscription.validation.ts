@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { FileType, PackageType } from "@prisma/client";
+import { FileType, PackageType } from "src/generated/client";
 
 const createSubscriptionSchema = z.object({
   type: z.nativeEnum(PackageType),

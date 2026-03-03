@@ -15,6 +15,7 @@
     "studio": "prisma studio"
   },
   "dependencies": {
+    "@prisma/adapter-pg": "^7.4.2",
     "@prisma/client": "^7.4.2",
     "bcrypt": "^6.0.0",
     "cookie-parser": "^1.4.7",
@@ -23,6 +24,7 @@
     "express": "^5.2.1",
     "http-status": "^2.1.0",
     "jsonwebtoken": "^9.0.3",
+    "pg": "^8.19.0",
     "typescript": "^5.9.3",
     "zod": "^4.3.6"
   },
@@ -34,6 +36,7 @@
     "@types/express": "^5.0.6",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^25.3.1",
+    "@types/pg": "^8.18.0",
     "prisma": "^7.4.2",
     "tsc": "^2.0.4"
   }

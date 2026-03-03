@@ -4,8 +4,8 @@ import config from "../config";
 import catchAsync from "../utils/catchAsync";
 import { AppError } from "../errors/AppError";
 import { verifyToken } from "../modules/auth/auth.utils";
-import type { Role } from "@prisma/client";
 import prisma from "../../lib/prisma";
+import type { Role } from "src/generated/enums";
 
 const auth = (
   ...requiredRoles: Role[]

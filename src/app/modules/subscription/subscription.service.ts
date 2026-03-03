@@ -1,7 +1,7 @@
 import prisma from "@/lib/prisma";
 import { AppError } from "../../errors/AppError";
 import { status } from "http-status";
-import type { SUBSCRIPTIONS } from "@prisma/client";
+import type { SUBSCRIPTIONS } from "src/generated/client";
 
 const createSubscription = async (payload: SUBSCRIPTIONS) => {
   return prisma.sUBSCRIPTIONS.create({ data: payload });

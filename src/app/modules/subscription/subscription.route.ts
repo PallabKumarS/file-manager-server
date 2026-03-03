@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { SubscriptionController } from "./subscription.controller";
 import auth from "../../middlewares/auth";
-import { Role } from "@prisma/client";
+import { Role } from "src/generated/enums";
 import validateRequest from "src/app/middlewares/validateRequest";
 import { SubscriptionValidation } from "./subscription.validation";
 

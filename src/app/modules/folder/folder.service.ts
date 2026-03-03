@@ -1,7 +1,7 @@
 import prisma from "@/lib/prisma";
 import { AppError } from "../../errors/AppError";
 import { status } from "http-status";
-import type { FOLDER } from "@prisma/client";
+import type { FOLDER } from "src/generated/client";
 
 const createFolder = async (
   userId: string,

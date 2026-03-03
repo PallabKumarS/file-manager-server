@@ -3,7 +3,7 @@ import { AuthController } from "./auth.controller";
 import validateRequest from "../../middlewares/validateRequest";
 import { AuthValidation } from "./auth.validation";
 import auth from "../../middlewares/auth";
-import { Role } from "@prisma/client";
+import { Role } from "src/generated/enums";
 
 const router = Router();
 

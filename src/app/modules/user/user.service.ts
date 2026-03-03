@@ -1,6 +1,6 @@
 import config from "@/config";
 import prisma from "@/lib/prisma";
-import type { USER } from "@prisma/client";
+import type { USER } from "src/generated/client";
 import bcrypt from "bcrypt";
 import status from "http-status";
 import { AppError } from "src/app/errors/AppError";

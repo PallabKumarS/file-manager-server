@@ -1,7 +1,7 @@
 import prisma from "@/lib/prisma";
-import type { FileType } from "@prisma/client";
 import status from "http-status";
 import { AppError } from "src/app/errors/AppError";
+import type { FileType } from "src/generated/enums";
 
 const createFile = async (
   userId: string,
