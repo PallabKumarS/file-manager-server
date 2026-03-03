@@ -46,9 +46,10 @@ model USER {
   createdAt    DateTime  @default(now())
   updatedAt    DateTime? @updatedAt
 
-  subscription SUBSCRIPTIONS? @relation(fields: [subscriptionId], references: [id])
-  folders      FOLDER[]
-  files        FILE[]
+  subscription          SUBSCRIPTIONS?        @relation(fields: [subscriptionId], references: [id])
+  folders               FOLDER[]
+  files                 FILE[]
+  subscriptionHistories subscriptionHistory[]
 
   @@map("users")
 }
@@ -68,7 +69,8 @@ model SUBSCRIPTIONS {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  users USER[]
+  users                 USER[]
+  subscriptionHistories subscriptionHistory[]
 
   @@map("subscriptions")
 }
@@ -116,4 +118,16 @@ model FILE {
   @@index([userId])
   @@index([folderId])
   @@map("files")
+}
+
+model subscriptionHistory {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  userId String
+  user   USER   @relation(fields: [userId], references: [id])
+
+  subscriptionId String
+  subscription   SUBSCRIPTIONS @relation(fields: [subscriptionId], references: [id])
 }

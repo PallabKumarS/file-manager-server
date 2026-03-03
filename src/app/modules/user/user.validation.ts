@@ -11,7 +11,6 @@ const createUserSchema = z.object({
 const updateUserSchema = z.object({
   body: z.object({
     name: z.string().min(1).optional(),
-    subscriptionId: z.string().uuid().optional(),
   }),
 });
 

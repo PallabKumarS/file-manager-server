@@ -48,7 +48,7 @@ const getMe = catchAsync(async (req, res) => {
 
 const updateUser = catchAsync(async (req, res) => {
   const result = await UserService.updateUserIntoDB(
-    req.params.id as string,
+    req.user.id as string,
     req.body,
   );
 
